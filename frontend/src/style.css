@@ -1,0 +1,119 @@
+/* Meme theme que calendrier-foyer : clair, gros contrastes, boutons tactiles.
+   Toutes les couleurs passent par ces variables. */
+:root {
+  --bg: #f3f6fb;
+  --surface: #ffffff;
+  --surface-2: #eef2f8;
+  --border: #d3dce8;
+  --text: #1e2a38;
+  --text-muted: #5b6b7d;
+  --primary: #2f6fdb;
+  --primary-soft: #dce8fd;
+  --on-primary: #ffffff;
+  --danger: #d64545;
+  --shadow: 0 2px 8px rgba(30, 42, 56, 0.08);
+}
+
+* { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+a { color: var(--primary); text-decoration: none; }
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 14px 20px;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  box-shadow: var(--shadow);
+}
+.topbar h1 { margin: 0; font-size: 24px; }
+
+main { padding: 16px 20px; width: 100%; max-width: 960px; margin: 0 auto; }
+
+/* Boutons larges, pensés pour le doigt (min 48px de cible tactile) */
+button {
+  font-size: 16px;
+  font-weight: 600;
+  padding: 12px 18px;
+  min-height: 48px;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  background: var(--primary);
+  color: var(--on-primary);
+  cursor: pointer;
+}
+button.icon { min-width: 48px; padding: 12px; font-size: 20px; }
+button.secondary { background: var(--surface-2); border-color: var(--border); color: var(--text); }
+button.danger { background: var(--danger); color: #fff; }
+button:active { transform: scale(0.97); }
+button:disabled { opacity: 0.5; cursor: not-allowed; }
+
+.inline { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+.error { color: var(--danger); font-weight: 600; }
+.empty-hint { color: var(--text-muted); font-size: 16px; text-align: center; padding: 20px 0; }
+
+/* Lecteur video */
+.player {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: var(--shadow);
+}
+.player-header { display: flex; justify-content: space-between; align-items: center; gap: 10px; margin-bottom: 12px; }
+.player-header h2 { margin: 0; font-size: 20px; }
+.date-title::first-letter { text-transform: uppercase; }
+.player video {
+  display: block;
+  width: 100%;
+  max-height: 70vh;
+  background: #000;
+  border-radius: 12px;
+}
+
+/* Liste des videos */
+.video-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 10px; }
+.video-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 10px solid var(--primary);
+  border-radius: 14px;
+  padding: 12px 16px;
+  box-shadow: var(--shadow);
+}
+.video-row.active { background: var(--primary-soft); }
+.video-date { font-weight: 800; font-size: 19px; }
+.video-date::first-letter { text-transform: uppercase; }
+.video-size { font-size: 15px; color: var(--text-muted); margin-top: 2px; }
+
+/* Lien de retour au portail-foyer, tout a gauche de l'en-tete : discret mais visible */
+.portal-link {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  padding: 9px 16px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.2;
+  white-space: nowrap;
+  color: var(--text-muted);
+  transition: color 0.15s ease, background 0.15s ease, border-color 0.15s ease;
+}
+.portal-link:hover { color: var(--primary); background: var(--primary-soft); }
+.title-group { display: flex; align-items: center; flex-wrap: wrap; gap: 14px; }
